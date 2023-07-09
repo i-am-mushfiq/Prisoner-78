@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
     }
+    
 
     public bool Update() //returns wheter the player is aiming or not
     {
@@ -20,16 +21,15 @@ public class CharacterMovement : MonoBehaviour
         bool isRunning = animator.GetBool("isRunning");
         bool isAiming = animator.GetBool("isAiming");
 
+        bool isShooting = animator.GetBool("isShooting");
+        bool shootPress = Input.GetMouseButton(0);
+
         bool forwardPress = Input.GetKey("w");
         bool rightPress = Input.GetKey("d");
         bool leftPress = Input.GetKey("a");
 
-        
-        
-
-        if (forwardPress)
+        void otherLogic()
         {
-            animator.SetBool("isRunning", true);
             if(aimPress)
             {
                 animator.SetBool("isAiming", true);
@@ -38,18 +38,25 @@ public class CharacterMovement : MonoBehaviour
             {
                 animator.SetBool("isAiming", false);
             }
+            if(shootPress)
+            {
+                animator.SetBool("isShooting", true);
+            }
+            if(!shootPress)
+            {
+                animator.SetBool("isShooting", false);
+            }
+        }
+        
+        if (forwardPress)
+        {
+            animator.SetBool("isRunning", true);
+            otherLogic();
         }
         if (!forwardPress)
         {
             animator.SetBool("isRunning", false);
-            if(aimPress)
-            {
-                animator.SetBool("isAiming", true);
-            }
-            if(!aimPress)
-            {
-                animator.SetBool("isAiming", false);
-            }
+            otherLogic();
         }
 
         if (isRunning)
