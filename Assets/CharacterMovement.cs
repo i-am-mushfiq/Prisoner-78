@@ -3,38 +3,44 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     private Animator animator;
-
-    public float movementSpeed = 3f;
+    private CharacterController characterController;
+    public float movementSpeed = 2f;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        characterController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
         bool isRunning = animator.GetBool("isRunning");
-        bool ForwardPress = Input.GetKey("w");
-        bool RightPress = Input.GetKey("d");
-        bool LeftPress = Input.GetKey("a");
+        bool forwardPress = Input.GetKey("w");
+        bool rightPress = Input.GetKey("d");
+        bool leftPress = Input.GetKey("a");
 
-        if (!isRunning && ForwardPress)
+        if (!isRunning && forwardPress)
         {
             animator.SetBool("isRunning", true);
-            transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
         }
-        if (isRunning && !ForwardPress)
+        if (isRunning && !forwardPress)
         {
             animator.SetBool("isRunning", false);
         }
-        if (RightPress)
-        {
-            animator.SetBool("isRunning", true);
-        }
 
-        if (LeftPress)
+        if (isRunning)
         {
-            animator.SetBool("isRunning", true);
+            Vector3 movement = transform.TransformDirection(Vector3.forward) * movementSpeed;
+            characterController.SimpleMove(movement);
+
+            if (rightPress)
+            {
+                transform.Rotate(Vector3.up, 90f * Time.deltaTime);
+            }
+            if (leftPress)
+            {
+                transform.Rotate(Vector3.up, -90f * Time.deltaTime);
+            }
         }
     }
 }
