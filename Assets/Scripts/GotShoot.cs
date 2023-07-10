@@ -22,5 +22,16 @@ public class GotShoot : MonoBehaviour
     {
         Health = Health - 1;
         animator.SetInteger("Health", Health);
+
+        animator.SetBool("isShot", true);
+        StartCoroutine(ResetShotState());
+        
+    }
+
+    private IEnumerator ResetShotState()
+    {
+        yield return new WaitForSeconds(1f); // 1 second delay
+        
+        animator.SetBool("isShot", false);
     }
 }

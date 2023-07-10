@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dead Body
+* source:	https://sketchfab.com/3d-models/dead-body-fdfca2c19a784789804f39d24f25bd8c
+* author:	Lukas Bobor (https://sketchfab.com/LukasBobor)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dead Body" (https://sketchfab.com/3d-models/dead-body-fdfca2c19a784789804f39d24f25bd8c) by Lukas Bobor (https://sketchfab.com/LukasBobor) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

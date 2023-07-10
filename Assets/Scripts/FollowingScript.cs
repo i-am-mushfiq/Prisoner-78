@@ -35,4 +35,13 @@ public class FollowingScript : MonoBehaviour
             agent.SetDestination(target.position);
         }
     }
+
+    // OnTriggerEnter is called when the Collider other enters the trigger
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            animator.SetBool("inRange", true) ;
+        }
+    }
 }
