@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class FollowingScript : MonoBehaviour
 {
-
     private UnityEngine.AI.NavMeshAgent agent;
-    public Transform target;
+    private Transform target;
     public Animator animator;
-
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+        // Find the object with the "player" tag and get its transform
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            target = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogError("Unable to find object with the 'Player' tag.");
+        }
     }
 
     // Update is called once per frame
@@ -26,5 +35,4 @@ public class FollowingScript : MonoBehaviour
             agent.SetDestination(target.position);
         }
     }
-
 }

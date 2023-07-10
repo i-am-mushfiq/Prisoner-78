@@ -12,6 +12,12 @@ public class CharacterMovement : MonoBehaviour
 
     private float cameraRotationX = 0f;
 
+    [SerializeField]
+    private AudioSource shootingSoundSource;
+    [SerializeField]
+    private GameObject muzzleFlash;
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -49,10 +55,21 @@ public class CharacterMovement : MonoBehaviour
             if(shootPress)
             {
                 animator.SetBool("isShooting", true);
+
+                //Sound
+                shootingSoundSource.Play(); 
+                if(muzzleFlash != null)
+                {
+                    muzzleFlash.SetActive(true);
+                }  
             }
             if(!shootPress)
             {
                 animator.SetBool("isShooting", false);
+                if(muzzleFlash != null)
+                {
+                    muzzleFlash.SetActive(false);
+                }      
             }
         }
         
@@ -70,7 +87,6 @@ public class CharacterMovement : MonoBehaviour
         if (backPress)
         {
             animator.SetBool("isBackwards", true);
-            otherLogic();
 
             Vector3 movement = transform.TransformDirection(-Vector3.forward) * (movementSpeed/2);
             characterController.SimpleMove(movement);
