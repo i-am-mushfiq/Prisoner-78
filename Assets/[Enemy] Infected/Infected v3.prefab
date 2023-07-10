@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 3027362647184465454}
   - component: {fileID: 60363255637715252}
   m_Layer: 0
-  m_Name: Infecter v3
+  m_Name: Infected v3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
