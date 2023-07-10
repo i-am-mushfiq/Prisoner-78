@@ -31,7 +31,11 @@ public class RaycastOnClick : MonoBehaviour
                 if (hit.transform.CompareTag("Enemy"))
                 {
                     // Deactivate the enemy object
-                    hit.transform.gameObject.SetActive(false);
+                    GotShoot gotShootComponent = hit.transform.GetComponent<GotShoot>();
+                    if (gotShootComponent != null)
+                    {
+                        gotShootComponent.gotShoot();
+                    }
                 }
             }
         }
