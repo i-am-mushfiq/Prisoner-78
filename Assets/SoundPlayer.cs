@@ -5,9 +5,6 @@ using UnityEngine;
 public class SoundPlayer : MonoBehaviour
 {
     public AudioSource audioSource1;
-    public AudioSource audioSource2;
-    public AudioSource audioSource3;
-    public AudioSource audioSource4;
 
     private int currentClipIndex = 0;
 
@@ -18,13 +15,7 @@ public class SoundPlayer : MonoBehaviour
 
     IEnumerator PlayAudioSourcesWithDelays()
     {
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(30f);
         audioSource1.Play();
-        yield return new WaitForSeconds(5f);
-        audioSource2.Play();
-        yield return new WaitForSeconds(10f);
-        audioSource3.Play();
-        yield return new WaitForSeconds(15f);
-        audioSource4.Play();
     }
 }
